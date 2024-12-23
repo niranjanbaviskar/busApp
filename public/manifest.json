@@ -2,9 +2,9 @@
   "short_name": "Apli PMPML",
   "name": "Create React App Sample",
   "icons": [
-    {
+        {
       "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "72x72 48x48 34x34 26x26",
       "type": "image/x-icon"
     },
     {
