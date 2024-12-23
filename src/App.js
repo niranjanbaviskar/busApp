@@ -12,17 +12,26 @@ function App() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [invalidId, setInvalidId] = useState(false);
+
+  const validIds = ['6239', '2343', '3421']; // Array of valid IDs
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
+    setInvalidId(false); // Reset invalid ID state on every input change
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    // Check if the entered ID is valid
+    if (validIds.includes(formData.id)) {
+      setSubmitted(true);
+    } else {
+      setInvalidId(true); // Set state to indicate invalid ID
+    }
   };
 
   return (
@@ -30,6 +39,7 @@ function App() {
       {!submitted ? (
         <div className="form-container">
           <h1>Enter Pass Details</h1>
+          {invalidId && <p style={{ color: 'red' }}>Invalid ID. Please try again.</p>}
           <form onSubmit={handleSubmit}>
             <input
               type="text"
