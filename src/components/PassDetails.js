@@ -48,8 +48,6 @@ function PassDetails({ data }) {
               <div style={{ ...styles.value, fontSize: styles.validityTimeFontSize }}>{storedData.validityTime}</div>
             </div>
           </div>
-          {/* <div style={styles.dottedLine}></div> */}
-          {/* ID and Footer */}
           <div style={styles.id}>2409041826Y71TNU</div>
           <div style={styles.dottedLine}></div>
           {/* Logo */}
@@ -65,85 +63,85 @@ function PassDetails({ data }) {
 const styles = {
   passDetails: {
     display: 'flex',
+    width: '100%',
+    height: '100vh', // Fixed height to occupy the full viewport
     justifyContent: 'center',
     alignItems: 'center',
-    padding: '0.3px',
     backgroundColor: '#f9f9f9',
-    height: '160vh',
     backgroundSize: 'cover', // Ensures the image covers the entire container
     backgroundPosition: 'center', // Centers the image
+    overflow: 'hidden', // Disables vertical scrolling
   },
   box: {
-    width: '95%',
-    maxWidth: '500px', // Increased the width to 900px
-    minWidth: '320px', // Added minimum width
+    width: '92%',
+    maxWidth: '500px',
+    minWidth: '320px',
     backgroundColor: '#fff',
-    borderRadius: '10px',
+    borderRadius: '15px',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
     position: 'relative',
-    height: '27%', // Auto height for box
-    paddingTop: '80px', // To create space for the header
+    height: '54%',
+    paddingTop: '80px',
   },
   header: {
     position: 'absolute',
     top: 0,
     left: 0,
     right: 0,
-    minHeight: '50px', // Ensure enough height for the header
-    backgroundColor: 'red',
+    minHeight: '50px',
+    backgroundColor: 'rgb(213, 54, 54)',
     color: '#fff',
     textAlign: 'center',
-    fontSize: '20px', // Increased font size for readability
-    fontWeight: 'bold',
-    lineHeight: '20px',
-    padding: '10px', // Padding to make text more readable
-    wordWrap: 'break-word', // Ensure long words wrap
-    whiteSpace: 'normal', // Allow text to wrap onto the next line
-    borderRadius: '10px 10px 0 0',
-  },
+    fontSize: '22px', // Reduced slightly to allow better fit
+    // fontWeight: 'bold',
+    lineHeight: '22px', // Adjusted for multi-line text
+    padding: '10px',
+    borderRadius: '15px 15px 0 0',
+    wordWrap: 'break-word', // Allow long words to wrap
+    whiteSpace: 'normal', // Prevent text from staying on one line
+  },  
   content: {
-    padding: '14px 10px 50px', // Adjusted padding to avoid overlapping with header/footer
+    padding: '12px 10px 50px',
   },
   horizontal: {
     display: 'flex',
     justifyContent: 'space-between',
-    marginBottom: '10px',
+    gap: '15px', // Space between the items
+    marginBottom: '18px',
   },
   item: {
     textAlign: 'left',
-    flex: 1,
-    margin: '0 5px',
+    flex: '1 1 auto', // Ensures even distribution without wrapping
+    minWidth: '0',    // Prevents items from breaking to the next line
   },
+  
   label: {
-    fontSize: '14px',
+    fontSize: '16px',
     color: '#808080',
   },
   value: {
-    fontSize: '16px',
+    fontSize: '22px',
     fontWeight: 'bold',
     color: '#333',
   },
-
   dottedLine: {
-    borderTop: '1px dashed #ccc',
-    margin: '10px 0 ',
+    borderTop: '1.5px dashed #ccc',
+    margin: '10px 0',
   },
   id: {
-    fontSize: '15px',
-    // fontWeight: 'bold',
+    fontSize: '17px',
     textAlign: 'center',
-    color: '#808080',
+    color: '#696969',
     padding: '4px',
   },
   logo: {
-    width: '100px',
-    height: '120px',
-    margin: '10px auto',
+    width: '170px',
+    height: '195px',
+    margin: '15px auto',
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     animation: 'zoom-in-out 2s infinite',
-    padding: '10px',
   },
   footer: {
     position: 'absolute',
@@ -151,21 +149,35 @@ const styles = {
     left: 0,
     right: 0,
     height: '30px',
-    backgroundColor: 'red',
+    backgroundColor: 'rgb(213, 54, 54)',
     color: '#fff',
     textAlign: 'center',
     fontSize: '16px',
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     lineHeight: '30px',
-    borderRadius: '0 0 10px 12px',
+    borderRadius: '0 0 15px 15px',
   },
   itemTime: {
-    flex: 0.47, // Reduce width to make them fit in one line
+    flex: 0.47,
     margin: '0.5px',
     textAlign: 'left',
   },
-  bookingTimeFontSize: '12.5px',
-  validityTimeFontSize: '12.5px',
+  bookingTimeFontSize: '14px',
+  validityTimeFontSize: '14px',
 };
+
+// Add this to the head of your app
+const stylesAnimation = document.createElement('style');
+stylesAnimation.innerHTML = `
+@keyframes zoom-in-out {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+`;
+document.head.appendChild(stylesAnimation);
 
 export default PassDetails;
